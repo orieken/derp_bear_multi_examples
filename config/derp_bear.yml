@@ -1,5 +1,0 @@
----
-heroku:
-    :url: http://derp-bear.herokuapp.com/
-isolation:
-    :url: http://localhost:9393/

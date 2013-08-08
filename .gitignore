@@ -4,6 +4,7 @@
 .bundle
 .config
 .idea/
+*.iml
 coverage
 InstalledFiles
 lib/bundler/man

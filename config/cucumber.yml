@@ -1,4 +1,0 @@
-<%
-std_opts = "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} -r features --expand "
-%>
-default: <%= std_opts %> features --format html --out <%= Time.now.strftime "report_%a_%b_%d_%H.%M.%S_%Y.html" %>

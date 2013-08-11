@@ -2,6 +2,7 @@ package derpbear;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
 import cucumber.api.PendingException;
@@ -20,6 +21,7 @@ import java.lang.reflect.Constructor;
 import java.net.URL;
 
 import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
@@ -43,7 +45,8 @@ public class DerpBearStepdefs {
         //if you have the derp-bear codebase you can use this url instead
         //derpBearUrl = "http://localhost:9393/";
 
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
+        driver = new FirefoxDriver();
 
 //        try {
 //            DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -55,7 +58,7 @@ public class DerpBearStepdefs {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-        driver.navigate().to(derpBearUrl);
+
     }
 
     @After
@@ -65,5 +68,32 @@ public class DerpBearStepdefs {
         }
     }
 
+    @Given("^I visit derpbear$")
+    public void I_visit_derpbear() throws Throwable {
+        driver.navigate().to(derpBearUrl);
 
+    }
+
+    @When("^I login$")
+    public void I_login() throws Throwable {
+        LandingPage landingPage = new LandingPage(driver);
+        landingPage.login();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginAs("Bond", "007");
+
+    }
+
+    @Then("^I should see the logged in message$")
+    public void I_should_see_the_logged_in_message() throws Throwable {
+        LandingPage landingPage = new LandingPage(driver);
+        String pageText = landingPage.notificationSection().getText();
+        assertThat(pageText, is(equalTo("You are now Logged in.")));
+    }
+
+    @Then("^I should see \"([^\"]*)\"$")
+    public void I_should_see(String expectedString) throws Throwable {
+        LandingPage landingPage = new LandingPage(driver);
+        String pageText = landingPage.notificationSection().getText();
+        assertThat(pageText, is(equalTo(expectedString)));
+    }
 }

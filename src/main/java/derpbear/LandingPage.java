@@ -21,11 +21,21 @@ public class LandingPage extends Page{
 
     //elements
     By exampleListLocator = By.id("examples");
+    By loginLinkLocator = By.id("login_link");
 
     public LandingPage examplesList(){
         driver.findElement(exampleListLocator);
         return this;
     }
+
+    public LandingPage login(){
+        driver.findElement(loginLinkLocator).click();
+                return new LoginPage(driver);
+    }
+
+
+
+
 
     // taking a stab at one method to pick an example since they all
     //follow the same pattern "some_name_example"

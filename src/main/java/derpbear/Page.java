@@ -1,6 +1,8 @@
 package derpbear;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.lang.reflect.InvocationTargetException;
@@ -24,12 +26,24 @@ public class Page {
     public Page(WebDriver driver) {
         this.driver = driver;
         shortWait = new WebDriverWait(driver, 15);
-        longWait = new WebDriverWait(driver, 15);
+        longWait = new WebDriverWait(driver, 30);
     }
 
     public WebDriver driver() {
         return driver;
     }
+
+    By notificationsLocator = By.id("flash");
+
+    public WebElement notificationSection() {
+        shortWait.until(presenceOfElementLocated(notificationsLocator));
+        return driver.findElement(notificationsLocator);
+    }
+
+
+
+
+
 
     public <T extends Page> T expectedPage(Class<T> type) {
         return getPage(type);

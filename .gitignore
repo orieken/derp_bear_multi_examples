@@ -9,6 +9,7 @@ coverage
 InstalledFiles
 lib/bundler/man
 pkg
+target/
 rdoc
 spec/reports
 test/tmp

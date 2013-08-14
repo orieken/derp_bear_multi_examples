@@ -10,3 +10,7 @@ gem 'watir-webdriver'
 gem 'rspec'
 gem 'pry'
 gem 'pry-nav'
+
+gem 'activerecord', '~> 4.0.0'
+gem 'factory_girl'
+

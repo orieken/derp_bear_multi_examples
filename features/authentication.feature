@@ -6,21 +6,22 @@ Feature: Logging into Derp Bear
 
 
   Scenario: Valid user login
-    Given I visit derpbear
-    When I login
+    When I login as a "valid"
     Then I should see the logged in message
 
-  Scenario: Valid user login other example
-    Given I visit derpbear
-    When I login
-    Then I should see "You are now Logged in."
 
-  Scenario: Invalid user login
-    Given I visit derpbear
-    When I login
-    Then I should see the logged in message
+#  Scenario: Invalid user login
+#    Given I visit derpbear
+#    When I login
+#    Then I should see the logged in message
 
-  Scenario: Invalid user login other example
-    Given I visit derpbear
-    When I login
-    Then I should see "Username or Password incorrect!"
+#  Scenario: Valid user login other example
+#    Given I visit derpbear
+#    When I login
+#    Then I should see "You are now Logged in."
+
+
+#  Scenario: Invalid user login other example
+#    Given I visit derpbear
+#    When I login
+#    Then I should see "Username or Password incorrect!"

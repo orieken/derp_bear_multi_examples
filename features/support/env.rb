@@ -6,6 +6,9 @@ require 'watir-webdriver'
 require 'pry'
 require 'pry-nav'
 
+require 'factory_girl'
+require 'active_record'
+
 require "#{File.expand_path(File.join(File.dirname(__FILE__),"..", "..", "lib", "sites"))}/derp_bear.rb"
 
 ENV['TAZA_ENV'] ||= 'heroku'
